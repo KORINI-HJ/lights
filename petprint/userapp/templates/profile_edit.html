@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    use.html
+{% endblock%}
+{% block content %}
+<div class="filebox">
+    <form method="post" action="upload" enctype="multipart/form-data"></form>
+    <label for="ex_file">프로필 사진</label>
+    <input type="file" id="ex_file" accept="image/*">
+</form>
+
+</div>
+<p>닉네임</p>
+<input type="text" id="ex_name">
+<input type="submit" action="upload">
+{% endblock %}
