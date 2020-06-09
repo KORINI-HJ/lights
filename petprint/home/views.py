@@ -29,6 +29,13 @@ class OwnerOnlyMixin(AccessMixin):
     raise_exception = True
     permission_denied_message = "Owner only can update/delete the object다."
 
+def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if request.user != obj.owner:
+            return self.handle_no_permission()
+        print(request)
+        return super().dispatch(request=request, *args, **kwargs)
+
 class DiaryCreateView(LoginRequiredMixin, CreateView):
     model = Diary
     fields = ['title', 'body', 'images']
@@ -43,21 +50,9 @@ class DiaryUpdateView(OwnerOnlyMixin, UpdateView):
     fields = ['title', 'body', 'images']
     success_url = reverse_lazy('index')
 
-    def get(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if request.user != obj.owner:
-            return self.handle_no_permission()
-        return super().dispatch(request, *args, **kwargs)
-
 class DiaryDeleteView(OwnerOnlyMixin, DeleteView):
     model = Diary
     success_url = reverse_lazy('index')
-
-    def get(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if request.user != obj.owner:
-            return self.handle_no_permission()
-        return super().dispatch(request, *args, **kwargs)
 
 def comment_create(request, diary_id):
     if request.method == "POST":

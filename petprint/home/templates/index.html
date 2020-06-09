@@ -27,9 +27,7 @@
             </div>
             <ul>
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">{{user.username}}</a>
-                </li>
+                
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout' %}">logout</a>
                 </li>
@@ -56,9 +54,9 @@
                         <hidden id="id">{{content.id}}</hidden>
                         <hidden id="title">{{content.title}}</hidden>
                         {% if content.images.url == '/media/null'%}
-                            <p class="view_image"><img src="media/default.jpg"></p>
+                            <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
                         {% else %}
-                            <p class="view_image"><img src="{{content.images.url}}"></p>
+                            <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
                         {% endif %}
                     </div>
                 </a>
