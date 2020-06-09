@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    create.html
+{% endblock%}
+{% block content %}
+    <a href="{% url 'index' %}">home</a>
+    <a href="{% url 'update' diary.id %}">update</a>
+    <a href="{% url 'delete' diary.id %}">delete</a>
+    <div>
+        <p>diary id: {{diary.id}}</p>
+        <p>owner: {{diary.owner}}</p>
+        <p>title: {{diary.title}}</p>
+        <p>body: {{diary.body}}</p>
+        <p>time: {{diary.time}}</p>
+        {% if diary.images.url == '/detail/media/null' or diary.images.url == '/media/null'%}
+            <p><img src="/media/default.jpg" width="100px" height="100px"></p>
+        {% else %}
+            <p><img src="{{diary.images.url}}" width="100px" height="100px"></p>
+        {% endif %}
+        <h3>-----comments-----</h3>
+        <form method='POST' action="{% url 'comment_create' diary.id %}">
+            {% csrf_token %}
+                {{ comments }}
+            <input type="submit">
+        </form>
+        {% for i in diary.comment_set.all %}
+            <hr>
+            <p>{{i.body}}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

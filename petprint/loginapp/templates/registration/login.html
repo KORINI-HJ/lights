@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <form method="POST">
+        {%csrf_token%}
+        {{form.as_p}}  <!--LoginView가 제공해주는 form의 이름은 form입니다.-->
+        <input type="submit" value="로그인">
+    </form>       <!--우리가 기존에 알고있던 form형식과 같습니다.-->
+</body>
+</html>
