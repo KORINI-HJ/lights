@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 
 from home.views import index, detail, comment_create, DiaryCreateView, DiaryUpdateView, DiaryDeleteView
-from loginapp import views as loginapp_views
+from loginapp.views import sign_up,nickname
 from django.contrib.auth.views import LoginView,LogoutView #sign_up기능은 장고에서 없어서 따로 view에서 함수 써주고 나머지 로그인,로그아웃은 장고에 있어서 따로 그냥 가져옴.
 
 
@@ -32,8 +32,9 @@ urlpatterns = [
     path('<int:pk>/update/', DiaryUpdateView.as_view(), name='update'),
     path('<int:pk>/delete/', DiaryDeleteView.as_view(), name='delete'),
     path('comment_create/<int:diary_id>', comment_create, name='comment_create'),
-    path('loginapp/sign_up/', loginapp_views.sign_up, name="sign_up"),
+    path('loginapp/sign_up/', sign_up, name="sign_up"),
     path('loginapp/login/',LoginView.as_view(),name="login"),
     path('loginapp/logout/',LogoutView.as_view(),name="logout"),
+    path('loginapp/nickname/',nickname,name="nickname"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
