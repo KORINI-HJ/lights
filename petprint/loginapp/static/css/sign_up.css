@@ -1,24 +1,87 @@
 .ac_item{
-    background-color:#E8C3A9;
-    font-family: 'nanumsquare_R';
-    margin: 30px;
+    border:none;
+    border-radius: 5px;
+    padding:12px 10px;
+    width:150px; 
+    margin: auto ;
+    margin-top: 10px;
+    margin-left: 520px;
+    box-shadow: 0 14px 28px rgb(245, 235, 255), 0 6px 10px rgba(172, 168, 168, 0.075);
 }
 
 
 
 .label3{
     color: #E8B1A9;
+    font-weight: bold;
+    width:70%; 
+    text-align:center;
+    margin:0px auto;
+    margin-top: 100px;
+    margin-left: 90px;
 }
  
 
 .label4{
-    color:  #E8B1A9;
+    color: #E8B1A9;
+    font-weight: bold;
+    width:70%; 
+    text-align:center;
+    margin:0px auto;
+    margin-top: 50px;
+    margin-left: 130px;
 }
 
 .label5{
-    color:  #E8B1A9;
+    color: #E8B1A9;
+    font-weight: bold;
+    width:70%; 
+    text-align:center;
+    margin:0px auto;
+    margin-top: 50px;
+    margin-left: 110px;
 }
 
+.ac_item input :focus{
+    outline:none;
+  }
+  
+  
+.ac_item input :hover{
+     background-color:#e8f0fe;
+     border:2px solid rgb(247, 202, 195) ;
+    
+  }
+  
+
+
+
+
+
 .register_btn{
-    color: brown;
+    background-color:rgb(247, 202, 195);
+    padding:10px;
+    border:2px solid rgb(247, 202, 195) ;
+    border-radius: 10px;
+    width:100px;
+    /* text-align: center; */
+    color:white;
+    margin:40px auto 70px; 
+    margin-left: 550px; /*순서상우하좌*/ 
+    display: block;
+    font-family: 'nanumsquare_R';
+    cursor: pointer;
+
+
+} 
+
+.register_btn:hover{
+  
+    color:rgb(247, 202, 195) ;
+    background-color: white;
+    border: 2px solid rgb(247, 202, 195); 
 }
+
+input.register_btn:focus{
+    outline:none;
+  }
