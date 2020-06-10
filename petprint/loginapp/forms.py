@@ -37,7 +37,7 @@ class  NickNameForm(forms.ModelForm):
         
 
         self.fields['nickname'].widget.attrs.update(
-            {'placeholder': '성명',
+            {'placeholder': '닉네임',
             'class': "pf_name fo-rm",
             'id': "pf_name"}) #나중에 css할때 수정
 
