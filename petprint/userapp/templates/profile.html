@@ -4,40 +4,6 @@
 {% endblock%}
 {% block content %}
 
-<section id="container">
-
-    <header id="header">
-        <section class="h_inner">
-
-            <h1 class="logo">
-                <a href="index.html">
-                    <div class="sprite_insta_icon"></div>
-                    <div>
-                        <div class="sprite_write_logo"></div>
-                    </div>
-                </a>
-            </h1>
-
-            <div class="search_field">
-                <input type="text" placeholder="검색" tabindex="0">
-
-                <div class="fake_field">
-                    <span class=sprite_small_search_icon></span>
-                    <span>검색</span>
-                </div>
-            </div>
-
-
-            <div class="right_icons">
-                <a href="new_post.html"><div class="sprite_camera_icon"></div></a>
-                <a href="login.html"><div class="sprite_compass_icon"></div></a>
-                <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a>
-                <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
-            </div>
-        </section>
-    </header>
-
-
     <div id="main_container">
 
         <section class="b_inner">
@@ -51,8 +17,8 @@
 
                 <div class="detail">
                     <div class="top">
-                        <div class="user_name">KindTiger</div>
-                        <a href="{% url 'profile_edit' %}" class="profile_edit">프로필편집</a>
+                        <div class="user_name">익명의 사자</div>
+                        <!--<a href="{% url 'profile_edit' %}" class="profile_edit">프로필편집</a>-->
                         <a href="#" class="logout">로그아웃</a>
                     </div>
 
