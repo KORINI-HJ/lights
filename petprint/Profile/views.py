@@ -13,9 +13,9 @@ def profile(request, user_id):
     profile = Profile.objects.get(owner_id=user_id)
     context['profile'] = profile
 
-    followers = Follow.objects.filter(follwee=user_id)
+    followers = Follow.objects.filter(followee=user_id)
     context['followers'] = followers
-    
+
     diary = Diary.objects.filter(owner_id=user_id)
     context['diary'] = diary
     return render(request, 'profile.html', context)
