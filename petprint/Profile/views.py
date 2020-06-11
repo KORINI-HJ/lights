@@ -3,7 +3,7 @@ from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, AccessMixin
 from django.urls import reverse_lazy
 
-from .models import Profile
+from .models import Profile, Follow
 from home.models import Diary
 
 # Create your views here.
@@ -13,7 +13,9 @@ def profile(request, user_id):
     profile = Profile.objects.get(owner_id=user_id)
     context['profile'] = profile
 
-
+    followers = Follow.objects.filter(follwee=user_id)
+    context['followers'] = followers
+    
     diary = Diary.objects.filter(owner_id=user_id)
     context['diary'] = diary
     return render(request, 'profile.html', context)
@@ -35,3 +37,8 @@ class ProfileUpdateView(OwnerOnlyMixin, UpdateView):
     model = Profile
     fields = ['pet_name', 'pet_image', 'pet_explain']
     success_url = reverse_lazy('index')
+
+def follow(request, follower, followee):
+    follow = Follow(follower=follower, followee=followee)
+    follow.save()
+    return render(request, 'index')
