@@ -1,8 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign_up</title>
+    <link rel="Stylesheet" type="text/css" href="{% static 'css/sign_up.css' %}">
+</head>
 <body>
-    <form method="POST">      <!-- form의 method는 POST로 설정해주고-->
-    {%csrf_token%}
-    {{sign_up_form.as_p}}   <!--views에서 넘겨받은 sign_up_form을 p 형식으로 보여줍시다-->
-    <input type="submit" value="회원가입">   <!--그리고 해당 폼을 전송할수 있는 submit버튼을 만들어 줍시다-->
-    <!--submit버튼은 form이 제공되는 것과 상관 없이 항상 있어야 합니다.-->
+    <form method="POST">
+        {% csrf_token %}
+        {% for i in RegisterForm %}
+        <div class="row_sign_up">
+
+            {% if i.label == "아이디" %}
+                <div class="label3">ID</div>
+            {%elif i.label == "비밀번호" %}
+                <div class="label4">PASSWORD</div>
+            {% else %}
+                <div class="label5">CHECK</div>
+            {%endif%}
+            <div class="input_box_sign_up">{{i}}</div>
+        
+        </div>
+        {%endfor%}
+        <input type="submit" value="회원가입" class="register_btn">
+    
     </form>
 </body>
+</html>
