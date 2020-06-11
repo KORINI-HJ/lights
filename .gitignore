@@ -3,3 +3,6 @@
 /workspace.xml
 petvenv
 
+__pycache__/*
+__pycache__
+db.sqlite3
