@@ -41,9 +41,7 @@ height: 100%;
     box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16), 0 3px 6px rgba(196, 196, 196, 0.23);
     font-family: 'UhBeeZIGLE'
 }
-.card-2 {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  }
+
 
 .input_box input:focus{
   outline:none;
@@ -79,8 +77,7 @@ height: 100%;
     border: 2px solid #A6A6A6; 
 }
 
-
-input.login_btn:focus{
+.login_btn:focus{
     outline:none;
   }
 
