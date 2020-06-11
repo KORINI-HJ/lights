@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'loginapp',
     'userapp',
+    'friends',
 ]
 
 MIDDLEWARE = [
