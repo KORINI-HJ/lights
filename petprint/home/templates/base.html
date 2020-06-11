@@ -8,13 +8,6 @@
 </head>
 <body>
     <div id = "container">
-<<<<<<< HEAD
-        <div id="auth">
-            <ul>
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">{{user.username}}님 안녕하세요</a>
-=======
         <div id="header">
             <div class="title"><a href="random.html">logo 들어갈 곳</a></div>
             <!--<div onclick="history.back();" class="page_cover"> </div>-->
@@ -38,7 +31,6 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' user.id %}">Me</a>
->>>>>>> 68671c4956b2ed850745edce8c0e539611f2577d
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
