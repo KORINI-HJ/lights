@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, AccessMixin
 from django.urls import reverse_lazy
 
-from .models import Profile
+from .models import Profile, Follow
 from home.models import Diary
 
 # Create your views here.
@@ -12,6 +12,9 @@ def profile(request, user_id):
     try:
         profile = Profile.objects.get(owner_id=user_id)
         context['profile'] = profile
+
+        followers = Follow.objects.filter(followee=user_id)
+        context['followers'] = followers
 
         diary = Diary.objects.filter(owner_id=user_id)
         context['diary'] = diary
@@ -37,7 +40,13 @@ class ProfileUpdateView(OwnerOnlyMixin, UpdateView):
     fields = ['pet_name', 'pet_image', 'pet_explain']
     success_url = reverse_lazy('index')
 
-def follow(request, follower, followee):
-    follow = Follow(follower=follower, followee=followee)
+def follow(request, followee, follower):
+    follow = Follow(follower_id=follower, followee_id=followee)
+    print('follower: ', follower, ' followee: ', followee)
     follow.save()
-    return render(request, 'index')
+    return redirect('profile', followee)
+
+def unfollow(request, followee, follower):
+    follow = Follow.get(follower_id=follower, followee_id=followee)
+    follow.delete()
+    return redirect('profile', followee)

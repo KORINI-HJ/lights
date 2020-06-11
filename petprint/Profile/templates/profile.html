@@ -2,10 +2,13 @@
 {% block title %} profile {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <div><a href="">follow</a></div>
+        <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
     {% endif %}
     <dir>
-        <h3>follower</h3>
+        <h3>followers</h3>
+        {% for follower in followers %}
+            <div>follower : {{ follower.followee }}</div>
+        {% endfor %}
     </dir>
     <div>
         <div><a href="{% url 'profile_update' user.id%}">update</a></div>

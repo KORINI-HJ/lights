@@ -22,7 +22,7 @@ from django.conf.urls import url
 from home.views import index, detail, comment_create, DiaryCreateView, DiaryUpdateView, DiaryDeleteView
 from loginapp.views import sign_up,nickname
 from django.contrib.auth.views import LoginView,LogoutView #sign_up기능은 장고에서 없어서 따로 view에서 함수 써주고 나머지 로그인,로그아웃은 장고에 있어서 따로 그냥 가져옴.
-from Profile.views import profile, ProfileUpdateView, ProfileCreateView
+from Profile.views import profile, ProfileUpdateView, ProfileCreateView, follow, unfollow
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,5 +38,7 @@ urlpatterns = [
     path('<int:user_id>/profile/', profile, name='profile'),
     path('<int:pk>/profile_create/', ProfileCreateView.as_view(), name='profile_create'),
     path('<int:pk>/profile_update/', ProfileUpdateView.as_view(), name='profile_update'),
+    path('follow/<int:followee>/<int:follower>', follow, name='follow'),
+    path('unfollow/<int:followee>/<int:follower>', unfollow, name='unfollow'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
