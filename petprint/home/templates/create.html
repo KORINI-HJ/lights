@@ -13,15 +13,33 @@
       </script>
     
     <form>
+    <label>
         <input type="radio" name="weather" value="행복" checked="행복"/>행복
+        <img src="lights/petprint/images/sunny.png">
+    </label>
+    <label>
         <input type="radio" name="weather" value="우울"/>우울
+        <img src="lights/petprint/images/cloud.png">
+    </label>
+    <label>
         <input type="radio" name="weather" value="슬픔"/>슬픔
+        <img src="lights/petprint/images/rain.png">
+    </label>
     </form>
     
     <form>
+    <label>
         <input type="radio" name="today" value="운동중" checked="운동중"/>운동중
+        <img src="lights/petprint/images/exercise.png">
+    </label>
+    <label>
         <input type="radio" name="today" value="훈련중"/>훈련중
+        <img src="lights/petprint/images/learn.png">
+    </label>
+    <label>
         <input type="radio" name="today" value="반성중"/>반성중
+        <img src="lights/petprint/images/sorry.png">
+    </label>
     </form>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}

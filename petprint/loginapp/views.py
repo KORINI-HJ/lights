@@ -1,7 +1,13 @@
 from django.shortcuts import render,redirect #render는 그냥 템플릿에 있는 html을 띄워주는 역할,redirect는 해당 url로 url요청을 다시 보내주는 것이다.
 from django.contrib.auth.forms import UserCreationForm  #장고에서 기본적으로 제공해주는 UserCreationForm을 사용합니다
 #기본적으로 만들어져있는 User모델에서 User생성을 쉽게 도와주는 모델폼으로 생각합시다.
-
+from django.contrib.auth.views import LoginView
+# from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterForm, NickNameForm
+from .models import NickName
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.conf import settings
 # Create your views here.
 def index(request):
     return render(request,'index.html')
