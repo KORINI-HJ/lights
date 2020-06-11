@@ -8,7 +8,10 @@
         <div><a href="{% url 'profile_update' user.id%}">update</a></div>
         <div><a href="{% url 'profile_create' user.id %}">create</a></div>
         <div>name: {{profile.pet_name}}</div>
-        <div>image: {{profile.pet_image}}</div>
+
+        <div>image: 
+            <p class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></p>
+        </div>
         <div>explain: {{profile.pet_explain}}</div>
     </div>
 
