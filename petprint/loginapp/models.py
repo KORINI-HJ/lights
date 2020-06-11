@@ -22,7 +22,7 @@ def save_user_nickname(sender, instance, **kwargs):
 class NickName(models.Model):
    
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    nickname = models.CharField('이름', max_length=5)
+    #nickname = models.CharField('이름', max_length=5)
    
     def __str__(self):
         return self.nickname
