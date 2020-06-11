@@ -4,20 +4,13 @@
 {% endblock %}
 {% block head %}
     <style>
-        .contentbox{
-            text-align: center;
-        }
-        #create-btn{
-            border :2px solid rgb(114, 113, 113);
-            border-radius: 20px;
-            background-color: white;
-        }
+        
     </style>
 {% endblock %}
 {% block content %}
         <div class="contentbox">
             {% if user.is_authenticated %}
-                <button id="create-btn"><a href="{% url 'create' %}"><h1>글작성</h1></div></a></button>
+                <button id="create-btn"><a href="{% url 'create' %}"><h1>write</h1></div></a></button>
             {% endif %}
 
             {% for content in diary %}
@@ -27,13 +20,9 @@
                         <hidden id="id">{{content.id}}</hidden>
                         <hidden id="title">{{content.title}}</hidden>
                         {% if content.images.url == '/media/null'%}
-<<<<<<< HEAD
-                            <p class="view_image"><img src="/media/default.jpg"></p>
-=======
 
                             <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
 
->>>>>>> 3fd894345c43d0e274376d08973d9bccedf89938
                         {% else %}
                             <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
                         {% endif %}
