@@ -1,0 +1,52 @@
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <title>{% block title %}PetPrint{% endblock %}</title>
+</head>
+<body>
+    <div id = "container">
+        <div id="header">
+            <div class="title"><a href="random.html">logo 들어갈 곳</a></div>
+            <!--<div onclick="history.back();" class="page_cover"> </div>-->
+            <div class="btn">Category</div>
+            <div class="catebox">
+                <div class="scroll">
+                    <ul>
+                        <div class="rand">
+                            <a href="random.html">home</a>
+                        </div>
+                        <div class="following">
+                            <a href="following.html">following</a>
+                        </div>
+                        <div class="userinfo">
+                            <a href="profile_create.html">user</a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <ul>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' user.id %}">Me</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sign_up' %}">sign_up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'login' %}"> Login</a>
+                </li>
+                {% endif %}
+              </ul>
+        </div>
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>

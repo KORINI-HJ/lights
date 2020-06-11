@@ -15,11 +15,7 @@ class Diary(models.Model):
 
     def __str__(self):
         return self.title
-'''
-# User 유저
-class User(models.Model):
-    password = models.CharField(max_length=20)
-'''
+
 # 댓글
 class Comment(models.Model):
     post = models.ForeignKey(Diary, on_delete=models.CASCADE)

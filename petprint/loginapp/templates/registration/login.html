@@ -1,15 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <link rel="Stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
 <body>
     <form method="POST">
-        {%csrf_token%}
-        {{form.as_p}}  <!--LoginView가 제공해주는 form의 이름은 form입니다.-->
-        <input type="submit" value="로그인">
+        {% csrf_token %}
+        {% for i in form%}
+<div class="row">
+
+    {% if i.label == "사용자 이름" %}
+        <div class="label1">ID</div>
+    {%elif i.label == "비밀번호" %}
+        <div class="label2">PASSWORD</div>
+    {%endif%}
+    <div class="input_box">{{i}}</div>
+
+</div>
+{%endfor%}
+
+    <input type="submit" value="login" class="login_btn">
+
     </form>       <!--우리가 기존에 알고있던 form형식과 같습니다.-->
 </body>
 </html>
