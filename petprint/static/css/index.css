@@ -2,12 +2,13 @@
 body{
 	margin-left: 10%;
 	margin-right: 10%;
+
+	
 }
 div, ul {
 	margin : 0;
 	padding: 0;
 	outline: none;
-
 }
 img{
 	width: 20%
@@ -28,22 +29,21 @@ ul{
 a:link { color:black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
 a:hover { color: rgb(184, 184, 184); text-decoration: none;}
-
 #header {
 	text-align: center;
 	display: table;
 }
 #logobox{
-	width: 40%;
+	width: 70%;
 	height: 40%;
 	display: table-cell;
 	text-align: left;
 }
 #logo {
-	width: 70%;
+	width: 45%;
 }
 #catebox{
-	width: 40%;
+	width: 35%;
 	height: 40%;
 	display: table-cell;
 	text-align: center;
@@ -55,10 +55,38 @@ a:hover { color: rgb(184, 184, 184); text-decoration: none;}
 	 
 }
 .cateimg{
-	border: 2px solid black;
-	border-radius: 10px;
+	border: 1px solid rgb(61, 61, 61);
+	border-radius: 20px;
 	width: 15%;
+	margin:2%;
 }
-.cateimg:hover{
-	i 
+.footprint{
+	display: inline;
+	width: 4.5%;
+	margin:-0.5%;
+	
 }
+
+/*#footprint{
+	width: 15%;
+	position: relative;
+	animation: myfirst 20s infinite;
+	animation-direction: normal;
+	animation-delay: 800ms;
+	display: inline;
+  }
+  
+  @keyframes myfirst {
+	0%   {left: 0%;}
+	10%  {left: 10%;}
+	20%  {left: 20%}
+	30%  {left: 30%;}
+	40%  {left: 40%;}
+	50%  {left: 50%;}
+	60%  {left: 60%}
+	70%  {left: 70%;}
+	80%  {left: 80%;}
+	90% {left: 90%;}
+	100%{left: 100%;}
+}
+*/

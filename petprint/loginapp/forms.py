@@ -1,4 +1,3 @@
-from .models import NickName
 from django import forms
 from django.contrib.auth.models import User
 
@@ -29,19 +28,3 @@ class RegisterForm(forms.ModelForm):
             {'placeholder': '비밀번호 확인',
              'class': "ac_item",
              'id': "password2"})     #이게 html 클래스 처럼 이름부여해주는거라서 나중에 회원가입 필드니까 css에서 클래스네임으로 바꿔주면됨
-'''
-class  NickNameForm(forms.ModelForm):
-    
-    def __init__(self, *args, **kwargs):
-        super(NickNameForm, self).__init__(*args, **kwargs)
-        
-
-        self.fields['nickname'].widget.attrs.update(
-            {'placeholder': '닉네임',
-            'class': "pf_name fo-rm",
-            'id': "pf_name"}) #나중에 css할때 수정
-
-    class Meta:
-        model = NickName
-        fields = [ 'nickname' ]
-'''

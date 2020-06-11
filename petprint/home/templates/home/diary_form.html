@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}diary_form.html{% endblock %}
+{% block head %} 
+<style>
+    .contentbox{
+        text-align: center;
+    }
+</style>
+{% endblock %}
 {% block content %}
-    <h1>Create & Update - {{user}}</h1>
+<div class="contentbox">
+    <h1>글 수정 및 작성하기</h1>
     {% if form.errors %}
         {{ form.errors }}
     {% endif%}
@@ -14,4 +22,5 @@
             <input type="submit" value='Submit'>
         </div>
     </form>
+</div>
 {% endblock%}
