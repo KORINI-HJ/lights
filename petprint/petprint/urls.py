@@ -38,5 +38,6 @@ urlpatterns = [
     path('loginapp/logout/',LogoutView.as_view(),name="logout"),
     path('userapp/profile/', profile, name="profile"),
     path('userapp/profile_edit/', profile_edit, name="profile_edit"),
+    path('<int:pk>/<int:pk>/follow/', follow, name='follow'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
