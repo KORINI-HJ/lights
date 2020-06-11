@@ -38,13 +38,7 @@ urlpatterns = [
     path('<int:user_id>/profile/', profile, name='profile'),
     path('<int:pk>/profile_create/', ProfileCreateView.as_view(), name='profile_create'),
     path('<int:pk>/profile_update/', ProfileUpdateView.as_view(), name='profile_update'),
-<<<<<<< HEAD
     path('follow/<int:followee>/<int:follower>', follow, name='follow'),
     path('unfollow/<int:followee>/<int:follower>', unfollow, name='unfollow'),
-=======
-   
-    #path('userapp/profile/', profile, name="profile"),
-    #path('userapp/profile_edit/', profile_edit, name="profile_edit"),
->>>>>>> a209225166ce7a044c103e4c605df27260e85f28
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
