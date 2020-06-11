@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm  #장고에서 기본적�
 #기본적으로 만들어져있는 User모델에서 User생성을 쉽게 도와주는 모델폼으로 생각합시다.
 from django.contrib.auth.views import LoginView
 # from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm, NickNameForm
-from .models import NickName
+from .forms import RegisterForm
+
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.conf import settings
@@ -23,7 +23,7 @@ def sign_up(request):
             user=User.objects.get(username=registerform.cleaned_data['username'])
             auth.login(request, user,
                        backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('nickname')
+            return redirect('index')
         else:
             registerform = RegisterForm(request.POST)
             return render(request, 'registration/sign_up.html', {'RegisterForm': registerform})
@@ -31,28 +31,4 @@ def sign_up(request):
     registerform = RegisterForm()
     return render(request, 'registration/sign_up.html',{'RegisterForm':registerform})
 
-def nickname(request):
-    user = request.user
-    nickname = user.nickname
-    
-    nicknameform = NickNameForm(request.POST or None, request.FILES, instance=nickname)
-
-    context = {'NickNameform':nicknameform,
-                    'NickName':nickname}
-
-    if request.method == 'POST':
-        if nicknameform.is_valid():
-            nickname.save()  
-            return redirect('index')
-        
-        else:
-            return render(request, 'registration/nickname.html', context)
-
-            
-    nicknameform = NickNameForm(instance=nickname)
-    context = {'NickNameform':nicknameform,
-                    'NickName':nickname}
-    
-
-    return render(request, 'registration/nickname.html', context)
 

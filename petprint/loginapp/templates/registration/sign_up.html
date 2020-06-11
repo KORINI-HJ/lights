@@ -1,31 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sign_up</title>
     <link rel="Stylesheet" type="text/css" href="{% static 'css/sign_up.css' %}">
 </head>
-<body>
-    <form method="POST">
-        {% csrf_token %}
-        {% for i in RegisterForm %}
-        <div class="row_sign_up">
 
-            {% if i.label == "아이디" %}
+<body>
+    <div class="sign_up_container">
+        <form method="POST">
+            {% csrf_token %}
+            {% for i in RegisterForm %}
+            <div class="row_sign_up">
+
+                {% if i.label == "아이디" %}
                 <div class="label3">ID</div>
-            {%elif i.label == "비밀번호" %}
+                {%elif i.label == "비밀번호" %}
                 <div class="label4">PASSWORD</div>
-            {% else %}
+                {% else %}
                 <div class="label5">CHECK</div>
-            {%endif%}
-            <div class="input_box_sign_up">{{i}}</div>
-        
-        </div>
-        {%endfor%}
-        <input type="submit" value="회원가입" class="register_btn">
-    
-    </form>
+                {%endif%}
+                <div class="input_box_sign_up">{{i}}</div>
+
+            </div>
+            {%endfor%}
+            <input type="submit" value="회원가입" class="register_btn">
+
+        </form>
+    </div>
 </body>
+
 </html>
