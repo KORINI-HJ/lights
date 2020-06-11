@@ -7,7 +7,6 @@
     <title>{% block title %}PetPrint{% endblock %}</title>
 </head>
 <body>
-    <h1>hello : {{ user.username }}</h1>
     <div id = "container">
         <div id="header">
             <div class="title"><a href="random.html">logo 들어갈 곳</a></div>
@@ -34,20 +33,47 @@
                     <a class="nav-link" href="{% url 'profile' user.id %}">Me</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'sign_up' %}">sign_up</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{%url 'login' %}"> Login</a>
+                    <a class="nav-link" href="{%url 'login' %}"> Login</a>
                 </li>
                 {% endif %}
-              </ul>
+            </ul>
         </div>
-    {% block content %}
-    {% endblock %}
+        <div id="header">
+            <div id="logobox"><img id ="logo" src="{% static 'img/logo.png' %}" alt="logo">
+                <a href="random.html"></a>
+            </div>
+            <!--<div onclick="history.back();" class="page_cover"> </div>-->
+            <div id="catebox">
+                <ul>    
+                    <li><img class="cateimg" src="{% static 'img/home.png' %}" alt="home"><a href="random.html"></a></li>
+                        
+                    <li><img class="cateimg" src="{% static 'img/following.png' %}" alt="following"><a href="following.html"></a></li>
+                    
+                    <li><img class="cateimg" src="{% static 'img/user.png' %}" alt="user"><a href="user.html"></a></li>
+                </ul>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 항상 최신버전의 JQuery를 사용가능하다. -->
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function(){
+                $('#Progress_Loading').hide(); //첫 시작시 로딩바를 숨겨준다.
+            })
+            .ajaxStart(function(){
+                $('#Progress_Loading').show(); //ajax실행시 로딩바를 보여준다.
+            })
+
+        </script>
+
+        {% block content %}
+        {% endblock %}
+
     </div>
 </body>
 </html>

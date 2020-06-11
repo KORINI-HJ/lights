@@ -17,7 +17,9 @@
                         <hidden id="id">{{content.id}}</hidden>
                         <hidden id="title">{{content.title}}</hidden>
                         {% if content.images.url == '/media/null'%}
+
                             <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
+
                         {% else %}
                             <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
                         {% endif %}

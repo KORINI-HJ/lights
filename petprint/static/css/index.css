@@ -1,0 +1,64 @@
+
+body{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+div, ul {
+	margin : 0;
+	padding: 0;
+	outline: none;
+
+}
+img{
+	width: 20%
+}
+#auth {
+	margin-top: 20px;
+	margin-right: 40px;
+	text-align: right;
+	text-transform: uppercase;
+}
+#auth li{	
+	display: inline;
+	padding: 3px;
+}
+ul{
+	list-style: none;
+}
+a:link { color:black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: rgb(184, 184, 184); text-decoration: none;}
+
+#header {
+	text-align: center;
+	display: table;
+}
+#logobox{
+	width: 40%;
+	height: 40%;
+	display: table-cell;
+	text-align: left;
+}
+#logo {
+	width: 70%;
+}
+#catebox{
+	width: 40%;
+	height: 40%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+#catebox ul li{
+	display: inline;
+	
+	 
+}
+.cateimg{
+	border: 2px solid black;
+	border-radius: 10px;
+	width: 15%;
+}
+.cateimg:hover{
+	i 
+}
