@@ -29,7 +29,7 @@ class RegisterForm(forms.ModelForm):
             {'placeholder': '비밀번호 확인',
              'class': "ac_item",
              'id': "password2"})     #이게 html 클래스 처럼 이름부여해주는거라서 나중에 회원가입 필드니까 css에서 클래스네임으로 바꿔주면됨
-
+'''
 class  NickNameForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
@@ -44,3 +44,4 @@ class  NickNameForm(forms.ModelForm):
     class Meta:
         model = NickName
         fields = [ 'nickname' ]
+'''

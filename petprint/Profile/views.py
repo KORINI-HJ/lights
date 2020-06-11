@@ -3,21 +3,20 @@ from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, AccessMixin
 from django.urls import reverse_lazy
 
-from .models import Profile, Follow
+from .models import Profile
 from home.models import Diary
 
 # Create your views here.
 def profile(request, user_id):
     context = {}
-    
-    profile = Profile.objects.get(owner_id=user_id)
-    context['profile'] = profile
+    try:
+        profile = Profile.objects.get(owner_id=user_id)
+        context['profile'] = profile
 
-    followers = Follow.objects.filter(followee=user_id)
-    context['followers'] = followers
-
-    diary = Diary.objects.filter(owner_id=user_id)
-    context['diary'] = diary
+        diary = Diary.objects.filter(owner_id=user_id)
+        context['diary'] = diary
+    except:
+        pass
     return render(request, 'profile.html', context)
 
 class OwnerOnlyMixin(AccessMixin):

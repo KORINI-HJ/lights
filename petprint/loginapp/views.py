@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm  #장고에서 기본적�
 #기본적으로 만들어져있는 User모델에서 User생성을 쉽게 도와주는 모델폼으로 생각합시다.
 from django.contrib.auth.views import LoginView
 # from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm, NickNameForm
+from .forms import RegisterForm
 from .models import NickName
 from django.contrib.auth.models import User
 from django.contrib import auth
