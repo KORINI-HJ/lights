@@ -11,25 +11,38 @@
     <div><a href="{% url 'profile_update' user.id%}">update</a></div>
     <div><a href="{% url 'profile_create' user.id %}">create</a></div>
     <div>name: {{profile.pet_name}}</div>
-
-    <div>image:
-        <p class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></p>
-    </div>
-    <div>explain: {{profile.pet_explain}}</div>
-</div>
-
-{% for content in diary %}
-<div><a href="{% url 'detail' content.id %}"></a></div>
-<div class="content">
-    <hidden id="owner">{{content.owner}}</hidden>
-    <hidden id="id">{{content.id}}</hidden>
-    <hidden id="title">{{content.title}}</hidden>
-    {% if content.images.url == '/media/null'%}
-    <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
-    {% else %}
-    <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
+    {% if user.is_authenticated %}
+    <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
     {% endif %}
-</div>
-</a>
-{% endfor %}
-{% endblock %}
+    <div>
+        <h3>followers</h3>
+        {% for follower in followers %}
+        <div>follower : {{ follower.followee }}</div>
+        {% endfor %}
+
+        <div>
+            <div><a href="{% url 'profile_update' user.id%}">update</a></div>
+            <div><a href="{% url 'profile_create' user.id %}">create</a></div>
+            <div>name: {{profile.pet_name}}</div>
+
+            <div>image:
+                <p class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></p>
+            </div>
+            <div>explain: {{profile.pet_explain}}</div>
+        </div>
+
+        {% for content in diary %}
+        <div><a href="{% url 'detail' content.id %}"></a></div>
+        <div class="content">
+            <hidden id="owner">{{content.owner}}</hidden>
+            <hidden id="id">{{content.id}}</hidden>
+            <hidden id="title">{{content.title}}</hidden>
+            {% if content.images.url == '/media/null'%}
+            <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
+            {% else %}
+            <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
+            {% endif %}
+        </div>
+        </a>
+        {% endfor %}
+        {% endblock %}
