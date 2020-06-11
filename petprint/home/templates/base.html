@@ -5,40 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <title>{% block title %}PetPrint{% endblock %}</title>
+  
+    {% block head %}{% endblock %}
 </head>
 <body>
     <div id = "container">
-<<<<<<< HEAD
         <div id="auth">
             <ul>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">{{user.username}}님 안녕하세요</a>
-=======
-        <div id="header">
-            <div class="title"><a href="random.html">logo 들어갈 곳</a></div>
-            <!--<div onclick="history.back();" class="page_cover"> </div>-->
-            <div class="btn">Category</div>
-            <div class="catebox">
-                <div class="scroll">
-                    <ul>
-                        <div class="rand">
-                            <a href="{% url 'index' %}">home</a>
-                        </div>
-                        <div class="following">
-                            <a href="following.html">following</a>
-                        </div>
-                        <div class="userinfo">
-                            <a href="profile_create.html">user</a>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-            <ul>
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' user.id %}">Me</a>
->>>>>>> 68671c4956b2ed850745edce8c0e539611f2577d
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -57,30 +33,52 @@
             <div id="logobox"><img id ="logo" src="{% static 'img/logo.png' %}" alt="logo">
                 <a href="random.html"></a>
             </div>
-            <!--<div onclick="history.back();" class="page_cover"> </div>-->
             <div id="catebox">
                 <ul>    
-                    <li><img class="cateimg" src="{% static 'img/home.png' %}" alt="home"><a href="random.html"></a></li>
+                    <li><a href="index.html"><img class="cateimg" src="{% static 'img/home.png' %}" alt="home" ></a></li>
                         
-                    <li><img class="cateimg" src="{% static 'img/following.png' %}" alt="following"><a href="following.html"></a></li>
+                    <li><a href="following.html"><img class="cateimg" src="{% static 'img/following.png' %}" alt="following" ></a></li>
                     
-                    <li><img class="cateimg" src="{% static 'img/user.png' %}" alt="user"><a href="user.html"></a></li>
+                    <li><a href="user.html"><img class="cateimg" src="{% static 'img/user.png' %}" alt="user" ></a></li>
                 </ul>
             </div>
+        </div>  
+        <div>
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            <img class="footprint" src="{% static 'img/footprintprint.png' %}"  />
+            
+            
+      
         </div>
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 항상 최신버전의 JQuery를 사용가능하다. -->
-        <script type="text/javascript" language="javascript">
-            $(document).ready(function(){
-                $('#Progress_Loading').hide(); //첫 시작시 로딩바를 숨겨준다.
-            })
-            .ajaxStart(function(){
-                $('#Progress_Loading').show(); //ajax실행시 로딩바를 보여준다.
-            })
-
-        </script>
-
-        {% block content %}
-        {% endblock %}
+        <br>
+        <br>
+        <p>
+            {% block content %}
+            {% endblock %}
+        </p>
+        
 
     </div>
 </body>
