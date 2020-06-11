@@ -38,6 +38,7 @@ urlpatterns = [
     path('<int:user_id>/profile/', profile, name='profile'),
     path('<int:pk>/profile_create/', ProfileCreateView.as_view(), name='profile_create'),
     path('<int:pk>/profile_update/', ProfileUpdateView.as_view(), name='profile_update'),
+    path('loginapp/nickname',nickname,name="nickname")
     #path('userapp/profile/', profile, name="profile"),
     #path('userapp/profile_edit/', profile_edit, name="profile_edit"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
