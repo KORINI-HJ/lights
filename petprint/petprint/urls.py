@@ -40,5 +40,6 @@ urlpatterns = [
     path('<int:pk>/profile_update/', ProfileUpdateView.as_view(), name='profile_update'),
     path('follow/<int:followee>/<int:follower>', follow, name='follow'),
     path('unfollow/<int:followee>/<int:follower>', unfollow, name='unfollow'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

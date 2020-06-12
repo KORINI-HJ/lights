@@ -32,6 +32,7 @@ a:hover { color: rgb(184, 184, 184); text-decoration: none;}
 #header {
 	text-align: center;
 	display: table;
+	border-bottom: 4px double grey;
 }
 #logobox{
 	width: 70%;
@@ -64,9 +65,16 @@ a:hover { color: rgb(184, 184, 184); text-decoration: none;}
 	display: inline;
 	width: 4.5%;
 	margin:-0.5%;
-	
+}
+.contentbox{
+	text-align: center;
 }
 
+#create-btn {
+	border :1px solid black;
+	border-radius: 30px;
+	background-color: white;
+}
 /*#footprint{
 	width: 15%;
 	position: relative;

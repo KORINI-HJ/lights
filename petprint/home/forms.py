@@ -1,5 +1,6 @@
 from django import forms
 from .models import Diary, Comment
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class DiaryForm(forms.ModelForm):
     
@@ -12,3 +13,18 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+
+
+
+class CreateDiary(forms.ModelForm):
+    class Meta:
+        model = Diary
+
+        fields = ['title', 'body']
+
+        widgets = {
+                    'title': forms.TextInput(
+                        attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                    ),
+                    'body': forms.CharField(widget=CKEditorUploadingWidget()),
+                }

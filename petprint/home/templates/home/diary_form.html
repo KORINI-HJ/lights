@@ -2,11 +2,7 @@
 
 {% block title %}diary_form.html{% endblock %}
 {% block head %} 
-<style>
-    .contentbox{
-        text-align: center;
-    }
-</style>
+
 {% endblock %}
 {% block content %}
 <div class="contentbox">
@@ -17,6 +13,7 @@
 
     <form action="." method='post' enctype="multipart/form-data">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <div>
             <input type="submit" value='Submit'>

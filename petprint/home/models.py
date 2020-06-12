@@ -2,14 +2,16 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
+ 
 # Create your models here.
 
 class Diary(models.Model):
     title = models.CharField(max_length=100)
     #user = models.CharField(default=settings.AUTH_USER_MODEL)
-    body = models.TextField()
+    body = RichTextUploadingField()
     images = models.ImageField(default='default.jpg', upload_to='%Y/%m/%d/%H/%m')
-    time = models.DateTimeField(auto_now=True)
+    time = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     #emotion = models.Choices
 
