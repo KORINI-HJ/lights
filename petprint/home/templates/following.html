@@ -1,1 +1,30 @@
-하위
+{% extends 'base.html' %}
+{% block title %}
+    index.html
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+        <div class="contentbox">
+            {% if user.is_authenticated %}
+                <button id="create-btn"><a href="{% url 'create' %}"><h1>write</h1></div></a></button>
+            {% endif %}
+
+            {% for content in diary %}
+                <a href="{% url 'detail' content.id %}">
+                    <div class="content">
+                        <hidden id="owner">{{content.owner}}</hidden>
+                        <hidden id="id">{{content.id}}</hidden>
+                        <hidden id="title">{{content.title}}</hidden>
+                        {% if content.images.url == '/media/null'%}
+
+                            <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
+
+                        {% else %}
+                            <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+{% endblock %}

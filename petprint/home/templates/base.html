@@ -36,10 +36,13 @@
             <div id="catebox">
                 <ul>    
                     <li><a href="{% url 'index' %}"><img class="cateimg" src="{% static 'img/home.png' %}" alt="home" ></a></li>
-                        
-                    <li><a href="following.html"><img class="cateimg" src="{% static 'img/following.png' %}" alt="following" ></a></li>
-                    
-                    <li><a href="{% url 'profile' user.id %}"><img class="cateimg" src="{% static 'img/user.png' %}" alt="user" ></a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'follow_index'  user.id %}"><img class="cateimg" src="{% static 'img/following.png' %}" alt="following" ></a></li>
+                        <li><a href="{% url 'profile' user.id %}"><img class="cateimg" src="{% static 'img/user.png' %}" alt="user" ></a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}"><img class="cateimg" src="{% static 'img/following.png' %}" alt="following" ></a></li>
+                        <li><a href="{% url 'login' %}"><img class="cateimg" src="{% static 'img/user.png' %}" alt="user" ></a></li>
+                    {% endif%}
                 </ul>
             </div>
         </div>

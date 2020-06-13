@@ -15,14 +15,12 @@ def profile(request, user_id):
 
         followers = Follow.objects.filter(followee=user_id)
         context['followers'] = followers
-
-        context['follower_list'] = followers.values_list('followee')
-
-
-        print(list(followers.values_list('followee')[0]))
-        print(type(followers.values_list('followee')[1]))
-        print(type(followers.values_list('followee')))
         
+        list_followers = []
+        for follower in followers:
+            list_followers.append(follower.follower)
+        
+        context['list_followers'] = list_followers
         diary = Diary.objects.filter(owner_id=user_id)
         context['diary'] = diary
 
@@ -55,6 +53,6 @@ def follow(request, followee, follower):
     return redirect('profile', followee)
 
 def unfollow(request, followee, follower):
-    follow = Follow.objects.filter(follower_id=follower, followee_id=followee)
+    follow = Follow.objects.get(follower_id=follower, followee_id=followee)
     follow.delete()
     return redirect('profile', followee)

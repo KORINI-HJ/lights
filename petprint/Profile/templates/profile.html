@@ -15,25 +15,10 @@
         </div>
 
         {% if user.is_authenticated %}
-            <div>{{ user }}</div>
-            <div>
-                {{ user.id }} : {{ follower_list }}
-                <br>
-                {% if user.id in follwer_list %}
-                    <h1>True</h1>
-                {% endif %}
-                {% for follower in follower_list %}
-                    {{ follower.followee }}
-                {% endfor %}
-            </div>
-            <div>{{ followers.attributes }}</div>
-
-            <br>
-            <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
-            {% if  user in followers.followee %}
-                <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
-            {% else %}
+            {% if  user in list_followers %}
                 <div><a href="{% url 'unfollow' user.id profile.owner_id %}">unfollow</a></div>
+            {% else %}
+                <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
             {% endif %}
         {% endif %}
 

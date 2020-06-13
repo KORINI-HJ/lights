@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 
 from .models import Diary
+from Profile.models import Follow
 from .forms import DiaryForm, CommentForm
 
 
@@ -14,6 +15,11 @@ def index(request):
     #contents = Diary.objects.order_by('?')[:num_random_contents]
     contents = Diary.objects.all()
     return render(request, 'index.html', {'diary':contents})
+
+def follow_index(request, user_id):
+    followers = Follow.objects.filter(follower_id=user_id)
+    diarys = Diary.objects.filter(owner_id=followers)
+    return render(request, 'following.html', {'diary': diarys})
 
 def detail(request, diary_id):
     # jss = get_object_or_404(Jasoseol, pk=jss_id)
