@@ -35,7 +35,7 @@
         {% endif %}
 
         {% for content in diary %}
-        <div><a href="{% url 'detail' content.id %}"></a></div>
+        <div><a href="{% url 'detail' content.id %}">
         <div class="content">
             <br>
             <hidden id="owner">{{content.owner}}</hidden>
