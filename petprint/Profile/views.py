@@ -16,8 +16,17 @@ def profile(request, user_id):
         followers = Follow.objects.filter(followee=user_id)
         context['followers'] = followers
 
+        context['follower_list'] = followers.values_list('followee')
+
+
+        print(list(followers.values_list('followee')[0]))
+        print(type(followers.values_list('followee')[1]))
+        print(type(followers.values_list('followee')))
+        
         diary = Diary.objects.filter(owner_id=user_id)
         context['diary'] = diary
+
+
     except:
         pass
     return render(request, 'profile.html', context)
@@ -42,11 +51,10 @@ class ProfileUpdateView(OwnerOnlyMixin, UpdateView):
 
 def follow(request, followee, follower):
     follow = Follow(follower_id=follower, followee_id=followee)
-    print('follower: ', follower, ' followee: ', followee)
     follow.save()
     return redirect('profile', followee)
 
 def unfollow(request, followee, follower):
-    follow = Follow.get(follower_id=follower, followee_id=followee)
+    follow = Follow.objects.filter(follower_id=follower, followee_id=followee)
     follow.delete()
     return redirect('profile', followee)

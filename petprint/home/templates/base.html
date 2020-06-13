@@ -13,12 +13,12 @@
         <div id="auth">
             <ul>
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' user.id %}">{{user.username}}님 안녕하세요!</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' user.id %}">{{user.username}}님 안녕하세요</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'sign_up' %}">sign_up</a>
@@ -35,11 +35,11 @@
             </div>
             <div id="catebox">
                 <ul>    
-                    <li><a href="index.html"><img class="cateimg" src="{% static 'img/home.png' %}" alt="home" ></a></li>
+                    <li><a href="{% url 'index' %}"><img class="cateimg" src="{% static 'img/home.png' %}" alt="home" ></a></li>
                         
                     <li><a href="following.html"><img class="cateimg" src="{% static 'img/following.png' %}" alt="following" ></a></li>
                     
-                    <li><a href="user.html"><img class="cateimg" src="{% static 'img/user.png' %}" alt="user" ></a></li>
+                    <li><a href="{% url 'profile' user.id %}"><img class="cateimg" src="{% static 'img/user.png' %}" alt="user" ></a></li>
                 </ul>
             </div>
         </div>
