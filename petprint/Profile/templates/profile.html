@@ -1,39 +1,52 @@
 {% extends 'base.html' %}
 {% block title %} profile {% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
-<div><a href="">follow</a></div>
-{% endif %}
 <div>
-    <h3>follower</h3>
-</div>
-<div>
-    <div><a href="{% url 'profile_update' user.id%}">update</a></div>
-    <div><a href="{% url 'profile_create' user.id %}">create</a></div>
-    <div>name: {{profile.pet_name}}</div>
-    {% if user.is_authenticated %}
-    <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
-    {% endif %}
+    <div><a href="{% url 'profile_update' user.id%}">update</a>
+    <a href="{% url 'profile_create' user.id %}">create</a></div>
+
     <div>
-        <h3>followers</h3>
-        {% for follower in followers %}
-        <div>follower : {{ follower.followee }}</div>
-        {% endfor %}
-
         <div>
-            <div><a href="{% url 'profile_update' user.id%}">update</a></div>
-            <div><a href="{% url 'profile_create' user.id %}">create</a></div>
             <div>name: {{profile.pet_name}}</div>
-
             <div>image:
                 <p class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></p>
             </div>
             <div>explain: {{profile.pet_explain}}</div>
         </div>
 
+        {% if user.is_authenticated %}
+            <div>{{ user }}</div>
+            <div>
+                {{ user.id }} : {{ follower_list}}
+                <br>
+                {% if user.id in follwer_list %}
+                    <h1>True</h1>
+                {% endif %}
+                {% for follower in follower_list %}
+                    {{ follower.followee }}
+                {% endfor %}
+            </div>
+            <div>{{ followers.attributes }}</div>
+
+            <br>
+            <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
+            {% if  user in followers.followee %}
+                <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
+            {% else %}
+                <div><a href="{% url 'unfollow' user.id profile.owner_id %}">unfollow</a></div>
+            {% endif %}
+        {% endif %}
+
+        <h3>followers</h3>
+        <div>num of followers: {{ followers.count }}</div>
+        {% for follower in followers %}
+        <div>follower : {{ follower.followee }}</div>
+        {% endfor %}
+
         {% for content in diary %}
         <div><a href="{% url 'detail' content.id %}"></a></div>
         <div class="content">
+            <br>
             <hidden id="owner">{{content.owner}}</hidden>
             <hidden id="id">{{content.id}}</hidden>
             <hidden id="title">{{content.title}}</hidden>
@@ -45,4 +58,5 @@
         </div>
         </a>
         {% endfor %}
+    </div>
         {% endblock %}
