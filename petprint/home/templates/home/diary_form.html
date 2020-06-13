@@ -1,23 +1,32 @@
 {% extends 'base.html' %}
-
+{%load static%}
 {% block title %}diary_form.html{% endblock %}
-{% block head %} 
-
+{% block head %}
+<link rel="Stylesheet" type="text/css" href="{% static 'css/diary_form.css' %}">
 {% endblock %}
 {% block content %}
 <div class="contentbox">
     <h1>글 수정 및 작성하기</h1>
     {% if form.errors %}
-        {{ form.errors }}
+    {{ form.errors }}
     {% endif%}
 
     <form action="." method='post' enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.media }}
-        {{ form.as_p }}
-        <div>
-            <input type="submit" value='Submit'>
-        </div>
+        {% for i in form %}
+
+        {% if i.label == "Body" %}
+        <div class="input_box">{{i}}</div>
+        {% elif i.label == "Title" %}
+        <P class="title">title:{{i}}</P>
+        {% else %}
+        <div class="input_box">{{i}}</div>
+        {%endif%}
+
+        {%endfor%}
+
+        <input type="submit" value='작성완료' class="create_btn">
     </form>
 </div>
 {% endblock%}
