@@ -17,7 +17,7 @@
         {% if user.is_authenticated %}
             <div>{{ user }}</div>
             <div>
-                {{ user.id }} : {{ follower_list}}
+                {{ user.id }} : {{ follower_list }}
                 <br>
                 {% if user.id in follwer_list %}
                     <h1>True</h1>
