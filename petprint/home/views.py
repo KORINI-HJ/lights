@@ -12,8 +12,8 @@ from .forms import DiaryForm, CommentForm
 # Create your views here.
 num_random_contents = 4
 def index(request):
-    #contents = Diary.objects.order_by('?')[:num_random_contents]
-    contents = Diary.objects.all()
+    contents = Diary.objects.order_by('?')
+    #contents = Diary.objects.all()
     return render(request, 'index.html', {'diary':contents})
 
 def follow_index(request, user_id):

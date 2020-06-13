@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block title %} profile {% endblock %}
+
 {% block content %}
 <div>
-    <div><a href="{% url 'profile_update' user.id%}">update</a>
-    <a href="{% url 'profile_create' user.id %}">create</a></div>
+    <div>
+        <a href="{% url 'profile_update' user.id%}">update</a>
+        <a href="{% url 'profile_create' user.id %}">create</a>
+    </div>
 
     <div>
         <div>
@@ -35,19 +38,21 @@
         {% endif %}
 
         {% for content in diary %}
-        <div><a href="{% url 'detail' content.id %}">
-        <div class="content">
-            <br>
-            <hidden id="owner">{{content.owner}}</hidden>
-            <!-- <hidden id="id">{{content.id}}</hidden> -->
-            <hidden id="title">{{content.title}}</hidden>
-            {% if content.images.url == '/media/null'%}
-            <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
-            {% else %}
-            <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
-            {% endif %}
-        </div>
-        </a>
+        <div>
+            <a href="{% url 'detail' content.id %}">
+            <div class="content">
+                <br>
+                <hidden id="owner">{{content.owner}}</hidden>
+                <!-- <hidden id="id">{{content.id}}</hidden> -->
+                <hidden id="title">{{content.title}}</hidden>
+                {% if content.images.url == '/media/null'%}
+                <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
+                {% else %}
+                <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
+                {% endif %}
+            </div>
+            </a>
         {% endfor %}
+        </div>
     </div>
-        {% endblock %}
+{% endblock %}
