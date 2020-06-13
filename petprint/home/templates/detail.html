@@ -8,7 +8,7 @@
     <a href="{% url 'delete' diary.id %}">delete</a>
     <div>
         <p>diary id: {{diary.id}}</p>
-        <a href="{% url 'profile' diary.owner.id %}"></a><p>owner: {{diary.owner}}</p></a>
+        <a href="{% url 'profile' diary.owner.id %}"><p>owner: {{diary.owner}}</p></a>
         <p>title: {{diary.title}}</p>
         <p>body: {{diary.body}}</p>
         <p>time: {{diary.time}}</p>

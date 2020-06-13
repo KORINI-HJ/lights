@@ -7,33 +7,35 @@
 
     <div>
         <div>
-            <div>name: {{profile.pet_name}}</div>
-            <div>image:
-                <p class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></p>
-            </div>
-            <div>explain: {{profile.pet_explain}}</div>
+            {% if profile %}
+                <div>name: {{profile.pet_name}}</div>
+                <div class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></div>
+                <div>explain: {{profile.pet_explain}}</div>
+            {% endif %}
         </div>
 
         {% if user.is_authenticated %}
             {% if  user in list_followers %}
-                <div><a href="{% url 'unfollow' user.id profile.owner_id %}">unfollow</a></div>
+                <div><a href="{% url 'unfollow' profile.owner_id user.id %}">unfollow</a></div>
             {% else %}
-                <div><a href="{% url 'follow' user.id profile.owner_id %}">follow</a></div>
+                <div><a href="{% url 'follow' profile.owner_id user.id %}">follow</a></div>
             {% endif %}
         {% endif %}
 
         <h3>followers</h3>
         <div>num of followers: {{ followers.count }}</div>
-        {% for follower in followers %}
-        <div>follower : {{ follower.followee }}</div>
-        {% endfor %}
+        {% if followers %}
+            {% for follower in followers %}
+            <div>follower : {{ follower.follower }}</div>
+            {% endfor %}
+        {% endif %}
 
         {% for content in diary %}
         <div><a href="{% url 'detail' content.id %}"></a></div>
         <div class="content">
             <br>
             <hidden id="owner">{{content.owner}}</hidden>
-            <hidden id="id">{{content.id}}</hidden>
+            <!-- <hidden id="id">{{content.id}}</hidden> -->
             <hidden id="title">{{content.title}}</hidden>
             {% if content.images.url == '/media/null'%}
             <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>

@@ -17,9 +17,16 @@ def index(request):
     return render(request, 'index.html', {'diary':contents})
 
 def follow_index(request, user_id):
+    context = {}
     followers = Follow.objects.filter(follower_id=user_id)
-    diarys = Diary.objects.filter(owner_id=followers)
-    return render(request, 'following.html', {'diary': diarys})
+    diarys = Diary.objects.none()
+    try:
+        for follower in followers:
+            diarys |= Diary.objects.filter(owner_id=follower.followee)
+    except:
+        pass
+    context['diary'] = diarys
+    return render(request, 'following.html', context)
 
 def detail(request, diary_id):
     # jss = get_object_or_404(Jasoseol, pk=jss_id)

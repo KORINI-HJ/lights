@@ -7,26 +7,31 @@ from .models import Profile, Follow
 from home.models import Diary
 
 # Create your views here.
-def profile(request, user_id):
+def profile(request, owner_id):
     context = {}
+    print('start')
     try:
-        profile = Profile.objects.get(owner_id=user_id)
-        context['profile'] = profile
-
-        followers = Follow.objects.filter(followee=user_id)
+        followers = Follow.objects.filter(followee=owner_id)
         context['followers'] = followers
-        
+        print('followers: ', followers)
+
         list_followers = []
         for follower in followers:
             list_followers.append(follower.follower)
-        
         context['list_followers'] = list_followers
-        diary = Diary.objects.filter(owner_id=user_id)
+        print('list: ', list_followers)
+        
+        diary = Diary.objects.filter(owner_id=owner_id)
         context['diary'] = diary
+        print('diary: ', diary)
 
-
+        profile = Profile.objects.get(owner_id=owner_id)
+        context['profile'] = profile
+        print(profile)
+        
     except:
         pass
+
     return render(request, 'profile.html', context)
 
 class OwnerOnlyMixin(AccessMixin):

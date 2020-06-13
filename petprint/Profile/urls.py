@@ -22,7 +22,7 @@ from django.conf.urls import url
 from .views import profile, ProfileUpdateView, ProfileCreateView, follow, unfollow
 
 urlpatterns = [
-    path('<int:user_id>/profile/', profile, name='profile'),
+    path('<int:owner_id>/profile/', profile, name='profile'),
     path('<int:pk>/profile_create/', ProfileCreateView.as_view(), name='profile_create'),
     path('<int:pk>/profile_update/', ProfileUpdateView.as_view(), name='profile_update'),
     path('follow/<int:followee>/<int:follower>', follow, name='follow'),
