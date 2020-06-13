@@ -17,8 +17,7 @@ def profile(request, user_id):
         context['followers'] = followers
 
         context['follower_list'] = followers.values_list('followee')
-        
-        for follower in context['follwer_list']:
+
 
         print(list(followers.values_list('followee')[0]))
         print(type(followers.values_list('followee')[1]))
