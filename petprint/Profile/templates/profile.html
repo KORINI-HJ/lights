@@ -7,10 +7,14 @@
 
     <div>
         <div>
-            {% if profile %}
+            {% if diary.owner == profile.onwer %}
                 <div>name: {{profile.pet_name}}</div>
+                {% if profile.pet_image != '' %}
                 <div class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></div>
+                {% endif %}
                 <div>explain: {{profile.pet_explain}}</div>
+            {% else %}
+                <div>test</div>
             {% endif %}
         </div>
 

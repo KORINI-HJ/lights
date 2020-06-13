@@ -2,35 +2,33 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, AccessMixin
 from django.urls import reverse_lazy
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
+
 
 from .models import Profile, Follow
 from home.models import Diary
 
 # Create your views here.
-def profile(request, owner_id):
+def profile(request, pet_id):
     context = {}
-    print('start')
     try:
-        followers = Follow.objects.filter(followee=owner_id)
+        followers = Follow.objects.filter(followee=pet_id)
         context['followers'] = followers
-        print('followers: ', followers)
 
         list_followers = []
         for follower in followers:
             list_followers.append(follower.follower)
         context['list_followers'] = list_followers
-        print('list: ', list_followers)
-        
-        diary = Diary.objects.filter(owner_id=owner_id)
-        context['diary'] = diary
-        print('diary: ', diary)
 
-        profile = Profile.objects.get(owner_id=owner_id)
+        diary = Diary.objects.filter(owner_id=pet_id)
+        context['diary'] = diary
+
+        profile = Profile.objects.get(owner_id=pet_id)
         context['profile'] = profile
-        print(profile)
         
-    except:
-        pass
+    except ObjectDoesNotExist:
+        return redirect('profile_create', pet_id)
 
     return render(request, 'profile.html', context)
 
