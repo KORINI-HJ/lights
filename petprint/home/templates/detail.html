@@ -14,15 +14,26 @@
     </div>
         {% autoescape on %}
         <div id = "diaryid">diary id: {{diary.id}}</div>
-        <div id = "diarytitle"><img width="20px" src="{% static 'img/footprint.gif' %}">{{diary.title}}</h2>
+        <img width="10%" height="auto" margin-top="10%" src="{% static 'img/footprint.gif' %}">
+        <div id = "diarytitle"> {{diary.title}}</div>
         <div id="diaryinfo"><a href="{% url 'profile' diary.owner.id %}">작성자 : {{diary.owner}}   작성 시간 : {{diary.time}}</a></div>
+<<<<<<< HEAD
+       
+        <div id = "diarybody">
+        
+=======
         <div id = "diarybody">body: {{diary.body|safe}}</div>
         {% endautoescape %}
+>>>>>>> c0f8f54bf5df581f62c9afd605a485d42f5402ba
         {% if diary.images.url == '/detail/media/null' or diary.images.url == '/media/null'%}
-            <div class="detail_img_view"><img src="{% static 'img/footprint.png' %}" ></div>
+            
         {% else %}
-            <div class="detail_img_view"><img src="{{diary.images.url}}" ></div>
+        <div class="detail_container">
+            <div class="detail_img_view"><img class="detail_img"src="{{diary.images.url}}" ></div>
+        </div>
         {% endif %}
+       
+        <p>{{diary.body| safe }}</p></div>
         <div id = "diarycomment">
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
@@ -44,7 +55,7 @@
         </div>
             {% csrf_token %}
                 {{ comments }}
-            <input type="submit">
+            <input type="submit" value="댓글쓰기">
         </form>
         {% for i in diary.comment_set.all %}
             <hr>
