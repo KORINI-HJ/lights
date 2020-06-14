@@ -1,34 +1,66 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} profile {% endblock %}
 
 {% block content %}
-<div>
-    <div>
-        <a href="{% url 'profile_update' user.id%}">update</a>
-        <a href="{% url 'profile_create' user.id %}">create</a>
-    </div>
+<div class="contentbox">
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />   
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <div class="profilebox">
+        
 
-    <div>
-        <div>
-            {% if diary.owner == profile.onwer %}
-                <div>name: {{profile.pet_name}}</div>
-                {% if profile.pet_image != '' %}
-                <div class="view_image"><img src="{{profile.pet_image.url}}" width="200px" height="200px"></div>
-                {% endif %}
-                <div>explain: {{profile.pet_explain}}</div>
-            {% else %}
-                <div>test</div>
+       <div class="profile_img_view">
+            {% if diary.owner == profile.onwer %}  
+               
+                    {% if profile.pet_image != '' %}
+                    <img class="profile_img" src="{{profile.pet_image.url}}">
+                    {% else %}
+                    <img class="profile_img" src="media/default.jpg">
+                
             {% endif %}
         </div>
-
+        
+        <div class="profile_detail_view">
+            <div>
+                <div class="profileinfo">나의 반려동물이름은</div>
+            
+                <div class="profileinfo-detail">"{{profile.pet_name}}"</div>
+            </div>
+            <br>
+                <div>
+                <div class="profileinfo">우리 {{profile.pet_name}} 소개해요!</div>
+            
+                <div class="profileinfo-detail">{{profile.pet_explain}}</div></div>
+        {% else %}
+        <div>test</div>
+        {% endif %}
+        
+        <br>
         {% if user.is_authenticated %}
             {% if  user in list_followers %}
-                <div><a href="{% url 'unfollow' profile.owner_id user.id %}">unfollow</a></div>
+                <button class="create-btn"><a href="{% url 'unfollow' profile.owner_id user.id %}"><h1>unfollow</h1></a></button>
             {% else %}
-                <div><a href="{% url 'follow' profile.owner_id user.id %}">follow</a></div>
+                <button class="create-btn"><a href="{% url 'follow' profile.owner_id user.id %}"><h1>follow</h1></a></button>
             {% endif %}
         {% endif %}
-
+    
         <h3>followers</h3>
         <div>num of followers: {{ followers.count }}</div>
         {% if followers %}
@@ -36,23 +68,54 @@
             <div>follower : {{ follower.follower }}</div>
             {% endfor %}
         {% endif %}
-
-        {% for content in diary %}
-        <div>
-            <a href="{% url 'detail' content.id %}">
-            <div class="content">
-                <br>
-                <hidden id="owner">{{content.owner}}</hidden>
-                <!-- <hidden id="id">{{content.id}}</hidden> -->
-                <hidden id="title">{{content.title}}</hidden>
-                {% if content.images.url == '/media/null'%}
-                <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
-                {% else %}
-                <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
-                {% endif %}
-            </div>
-            </a>
-        {% endfor %}
         </div>
     </div>
+    <div>
+        <button class="create-btn"><a href="{% url 'profile_update' user.id%}"><h1>update</h1></a></button>
+        <button class="create-btn"><a href="{% url 'profile_create' user.id %}"><h1>create</h1></a></button>
+    </div>
+        <br>
+        <br>
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />   
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <br><br><br>
+        <div class="detailbox">
+            {% for content in diary %}
+
+                    <article class="content">
+                        <a href="{% url 'detail' content.id %}">
+                        <div class="location-title">
+                            <hidden id="owner">{{content.owner}}</hidden>
+                            <!-- <hidden id="id">{{content.id}}</hidden> -->
+                            <p>::</p>
+                            <hidden id="title">{{content.title}}</hidden>
+                        </div>
+                        {% if content.images.url == '/media/null'%}
+                            <div class="view_image"><img src="{% static 'img/footprint.png' %}"></div>
+                        {% else %}
+                            <div class="view_image"><img src="{{content.images.url}}" ></div>
+                        {% endif %}  
+                    </a>
+                    </article>
+              
+            {% endfor %}
+            </div>
+    
 {% endblock %}

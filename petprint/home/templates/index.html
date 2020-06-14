@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
 index.html
 {% endblock %}
@@ -7,25 +8,35 @@ index.html
 {% endblock %}
 {% block content %}
         <div class="contentbox">
-            {% if user.is_authenticated %}
-                <button id="create-btn"><a href="{% url 'create' %}"><h1>write</h1></div></a></button>
-            {% else %}
-                <button id="create-btn"><a href="{% url 'login' %}"><h1>write</h1></div></a></button>
-            {% endif %}
-
+            
+            <div class="detailbox">
             {% for content in diary %}
-                <a href="{% url 'detail' content.id %}">
-                    <div class="content">
-                        <hidden id="owner">{{content.owner}}</hidden>
-                        <!-- <hidden id="id">{{content.id}}</hidden> -->
-                        <hidden id="title">{{content.title}}</hidden>
+
+                    <article class="content">
+                        <a href="{% url 'detail' content.id %}">
+                        <div class="location-title">
+                            <hidden id="owner">{{content.owner}}</hidden>
+                            <!-- <hidden id="id">{{content.id}}</hidden> -->
+                            <p>::</p>
+                            <hidden id="title">{{content.title}}</hidden>
+                        </div>
                         {% if content.images.url == '/media/null'%}
-                            <p class="view_image"><img src="media/default.jpg" width="200px" height="200px"></p>
+                            <div class="view_image"><img src="{% static 'img/footprint.png' %}"></div>
                         {% else %}
-                            <p class="view_image"><img src="{{content.images.url}}" width="200px" height="200px"></p>
-                        {% endif %}
-                    </div>
-                </a>
+                            <div class="view_image"><img src="{{content.images.url}}" ></div>
+                        {% endif %}  
+                    </a>
+                    </article>
+              
             {% endfor %}
+            </div>
         </div>
+    <footer>
+        {% if user.is_authenticated %}
+                <button class="create-btn"><a href="{% url 'create' %}"><h1>write</h1></a></button>
+            {% else %}
+                <button class="create-btn"><a href="{% url 'login' %}"><h1>write</h1></a></button>
+            {% endif %}
+            <br>
+    </footer>
 {% endblock %}
