@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.http import Http404
 
-from .models import Diary
+from .models import Diary, HashTag
 from Profile.models import Follow
 from .forms import DiaryForm, CommentForm
 
@@ -32,10 +32,11 @@ def detail(request, diary_id):
     # jss = get_object_or_404(Jasoseol, pk=jss_id)
     try:
         diary = Diary.objects.get(pk=diary_id)
+        hashtag = HashTag.objects.filter(diary=diary)
     except:
         raise Http404
     cmt = CommentForm()
-    context = {'diary' : diary, 'comments': cmt}
+    context = {'diary' : diary, 'comments': cmt, 'tags' : hashtag}
     return render(request, 'detail.html', context)
 
 class OwnerOnlyMixin(AccessMixin):
@@ -56,7 +57,18 @@ class DiaryCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        return super().form_valid(form)
+        words = form.instance.body
+        words = words.replace('<p>', ' ')
+        words = words.replace('</p>', ' ')
+        words = words.split(' ')
+        form.instance.save()
+        for word in words:
+            if word != '' and word[0] == '#':
+                hashtag, created = HashTag.objects.get_or_create(tag=word[1:])
+                print(hashtag, '\n', created, '\n')
+                hashtag.diary.add(form.instance)
+
+        return redirect('index')
 
 class DiaryUpdateView(OwnerOnlyMixin, UpdateView):
     model = Diary
@@ -80,3 +92,11 @@ def comment_create(request, diary_id):
     context = {'comments': cmt, 'diary': diary}
     return render(request, 'detail.html', context)
 
+
+def search_hashtag(request, tag_id):
+    context = {}
+    tag = HashTag.objects.get(id=tag_id)
+    diary = tag.diary.all()
+    context['diary'] = diary
+    context['tag'] = tag
+    return render(request, 'hashtag.html', context)

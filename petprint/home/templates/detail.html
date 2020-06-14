@@ -28,6 +28,10 @@
          {% endif %}
        
         <p>{{diary.body| safe }}</p></div>
+        <p><h2>hashtag</h2></p>
+        {% for tag in tags %}
+            <p><a href="{% url 'search_hashtag' tag.id %}"> # {{ tag }}</a></p>
+        {% endfor %}
         <div id = "diarycomment">
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />

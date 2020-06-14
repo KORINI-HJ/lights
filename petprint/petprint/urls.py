@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url
 
-from home.views import index, detail, comment_create, DiaryCreateView, DiaryUpdateView, DiaryDeleteView, follow_index
+from home.views import index, detail, comment_create, DiaryCreateView, DiaryUpdateView, DiaryDeleteView, follow_index, search_hashtag
 from Profile.views import profile, ProfileUpdateView, ProfileCreateView, follow, unfollow
 
 urlpatterns = [
@@ -34,5 +34,6 @@ urlpatterns = [
     path('profile/', include('Profile.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('follower_index/<int:user_id>', follow_index, name='follow_index' ),
+    path('tag/<int:tag_id>', search_hashtag, name='search_hashtag'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

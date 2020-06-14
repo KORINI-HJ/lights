@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+index.html
+{% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+    <p><h2>hashtag : {{ tag }}</h2></p>
+        <div class="contentbox">
+            
+            <div class="detailbox">
+            {% for content in diary %}
+
+                    <article class="content">
+                        <a href="{% url 'detail' content.id %}">
+                        <div class="location-title">
+                            <hidden id="owner">{{content.owner}}</hidden>
+                            <!-- <hidden id="id">{{content.id}}</hidden> -->
+                            <p>::</p>
+                            <hidden id="title">{{content.title}}</hidden>
+                        </div>
+                        {% if content.images.url == '/media/null'%}
+                            <div class="view_image"><img src="{% static 'img/footprint.png' %}"></div>
+                        {% else %}
+                            <div class="view_image"><img src="{{content.images.url}}" ></div>
+                        {% endif %}  
+                    </a>
+                    </article>
+              
+            {% endfor %}
+            </div>
+        </div>
+    <footer>
+        {% if user.is_authenticated %}
+                <button class="create-btn"><a href="{% url 'create' %}"><h1>write</h1></a></button>
+            {% else %}
+                <button class="create-btn"><a href="{% url 'login' %}"><h1>write</h1></a></button>
+            {% endif %}
+            <br>
+    </footer>
+{% endblock %}
