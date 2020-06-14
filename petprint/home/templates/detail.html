@@ -8,7 +8,9 @@
     <div>
     <button class="create-btn"><a href="{% url 'index' %}"><h1>home</h1></a></button>
     <button class="create-btn"><a href="{% url 'update' diary.id %}"><h1>update</h1></a></button>
+    {% if user.username == diary.owner %}
     <button class="create-btn"><a href="{% url 'delete' diary.id %}"><h1>delete</h1></a></button>
+    {%endif%}
     </div>
         <div id = "diaryid">diary id: {{diary.id}}</div>
         <img width="10%" height="auto" margin-top="10%" src="{% static 'img/footprint.gif' %}">
