@@ -4,6 +4,7 @@
     format('woff'); font-weight: normal; font-style: normal;
     }
 body{
+	
 	margin-left: 10%;
 	margin-right: 10%;
 
@@ -267,6 +268,24 @@ footer .create-btn{
 }
 .footprint{
 	
-	width: 5%;
+	width: 7%;
 	
+}
+.diarybox{
+	align-items: center;
+	text-align: center;
+}
+#diaryid {
+	display: none;
+}
+#diaryinfo{
+
+}
+
+.detail_img_view img{
+	width: 80%;
+	height: auto;
+}
+#diarycomment{
+	margin: 10%;
 }

@@ -4,22 +4,38 @@
     create.html
 {% endblock%}
 {% block content %}
+<div class="diarybox">
+    <div>
     <button class="create-btn"><a href="{% url 'index' %}"><h1>home</h1></a></button>
     <button class="create-btn"><a href="{% url 'update' diary.id %}"><h1>update</h1></a></button>
     <button class="create-btn"><a href="{% url 'delete' diary.id %}"><h1>delete</h1></a></button>
-    <div>
-        <p>diary id: {{diary.id}}</p>
-        <a href="{% url 'profile' diary.owner.id %}"><p>owner: {{diary.owner}}</p></a>
-        <p>title: {{diary.title}}</p>
-        <p>body: {{diary.body}}</p>
-        <p>time: {{diary.time}}</p>
+    </div>
+        <div id = "diaryid">diary id: {{diary.id}}</div>
+        <div id = "diarytitle"><img width="20px" src="{% static 'img/footprint.gif' %}">{{diary.title}}</h2>
+        <div id="diaryinfo"><a href="{% url 'profile' diary.owner.id %}">작성자 : {{diary.owner}}   작성 시간 : {{diary.time}}</div>
+        <div id = "diarybody">body: {{diary.body}}</div>
+    
         {% if diary.images.url == '/detail/media/null' or diary.images.url == '/media/null'%}
-            <p><img src="{% static 'img/footprint.png' %}" ></p>
+            <div class="detail_img_view"><img src="{% static 'img/footprint.png' %}" ></div>
         {% else %}
-            <p><img src="{{diary.images.url}}" ></p>
+            <div class="detail_img_view"><img src="{{diary.images.url}}" ></div>
         {% endif %}
-        <h3>-----comments-----</h3>
+        <div id = "diarycomment">
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+        <h2 style="display: inline;">comments</h2>
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
         <form method='POST' action="{% url 'comment_create' diary.id %}">
+        </div>
             {% csrf_token %}
                 {{ comments }}
             <input type="submit">
