@@ -12,7 +12,7 @@
     </div>
         <div id = "diaryid">diary id: {{diary.id}}</div>
         <div id = "diarytitle"><img width="20px" src="{% static 'img/footprint.gif' %}">{{diary.title}}</h2>
-        <div id="diaryinfo"><a href="{% url 'profile' diary.owner.id %}">작성자 : {{diary.owner}}   작성 시간 : {{diary.time}}</div>
+        <div id="diaryinfo"><a href="{% url 'profile' diary.owner.id %}">작성자 : {{diary.owner}}   작성 시간 : {{diary.time}}</a></div>
         <div id = "diarybody">body: {{diary.body}}</div>
     
         {% if diary.images.url == '/detail/media/null' or diary.images.url == '/media/null'%}
@@ -22,18 +22,21 @@
         {% endif %}
         <div id = "diarycomment">
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
-    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
-    <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
-    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
-    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
-    <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+        <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+
         <h2 style="display: inline;">comments</h2>
+
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" />
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
         <img class="footprint" src="{% static 'img/footprintprint.png' %}" /> 
+
         <form method='POST' action="{% url 'comment_create' diary.id %}">
         </div>
             {% csrf_token %}
