@@ -35,6 +35,7 @@
 <body>
     <div id = "container">
         <div id="auth">
+            
             <ul>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -52,12 +53,16 @@
                     </li>
                 {% endif %}
             </ul>
+            
         </div>
         <div id="header">
-            <div id="logobox"><img id ="logo" src="{% static 'img/logo.png' %}" alt="logo">
-                <a href="random.html"></a>
+            
+            <div id="logobox">
+                <img id ="logo" src="{% static 'img/logo.png' %}" alt="logo">
+                <div style=" text-align: left; padding-left: 5%;">"사랑하는 나의 반려동물과 함께한 추억 남기기"</div>
             </div>
             <div id="catebox">
+                
                 <ul>    
                     <li><a href="{% url 'index' %}"><img class="cateimg" src="{% static 'img/home.png' %}" alt="home" ></a></li>
                     {% if user.is_authenticated %}
