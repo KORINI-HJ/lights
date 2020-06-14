@@ -282,10 +282,50 @@ footer .create-btn{
 
 }
 
-.detail_img_view img{
-	width: 80%;
+.detail_container {
+	position: relative;
+	padding-top: 100%; /* 1:1 ratio */
+	overflow: hidden;
+	
+}
+.detail_img_view{
+	position: absolute;
+	top: 0;
+	left: 0; 
+	right: 0; 
+	bottom: 0;
+	line-height: 0;
+}
+
+.detail_img{
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+	max-width: 100%; 
 	height: auto;
+	
 }
 #diarycomment{
 	margin: 10%;
+}
+#diarytitle{
+	font-size:xx-large;
+	font-weight: bold;
+	vertical-align: top;
+	display: inline-block;
+	margin-right: 7%;
+	margin-top: 4%;
+}
+#diarybody{
+	font-size: x-large;
+	display: inline-block;
+	width: 60%;
+	padding :10%;
+	margin: 2%;
+	border: 1px solid darkgray;
+	border-radius: 10px;
+	align-items: center;
+	
 }
