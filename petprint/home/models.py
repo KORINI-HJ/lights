@@ -26,10 +26,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.body
-
+'''
 class HashTag(models.Model):
     tag = models.CharField(max_length=20, unique=True)
     diary = models.ManyToManyField(Diary)
 
     def __str__(self):
         return self.tag
+
+'''
